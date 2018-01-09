@@ -1,0 +1,298 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <ui:include src="newHead.xhtml"/>
+        <title>MyPlantParadise - Die Pflanzenübersicht zur Seite</title>
+    </h:head>
+    <h:body>
+        <header><img src="images/logo.png"></img></header>
+            <div id="NavLEqualsMainL">
+                <nav>
+                    <ui:include src="navigation.xhtml">
+                        <ui:param name="active" value="Dictionary"/>
+                    </ui:include>
+                </nav>
+                <main>
+                    <div class="Description">
+                        <p>
+                            Im Lexikon findest du Steckbriefe zu vielen verschiedenen Pflanzen.<br/>
+                            Im Auswahlfeld kannst du dir alle Pflanzen anzeigen lassen und aus der Liste die Passende auswählen. Außerdem kannst du einen Filtertext eingeben und so die Anzahl der Ergebnisse verringern.
+                            Mit einem Klick auf "Laden" fügst du die Pflanze deiner Auswahl hinzu. Alternativ kannst du dich auch durch die verschiedenen Kategorien durchklicken.
+                        </p>
+                    </div>
+                    <div id="Load-Overview">
+                        <div id="Loader">
+                            <caption><h2 style="font-size: 160%">Pflanze eingeben</h2></caption>
+                            <h:panelGroup id="updatable1">
+                                <div id="Dictionary-Load" align="center">
+                                    <h:form>
+                                        <p:autoComplete size="26" scrollHeight="250" panelStyleClass="panel" dropdown="true" value="#{DictionaryBean.selectedPlant}" completeMethod="#{DictionaryBean.completeText}"/>
+                                        <br/>
+                                        <div style="font-size: small">
+                                            <p:commandButton ajax="true" update="updatable1 updatable2" class="button" value="Laden" action="#{DictionaryBean.loadPlantFromInput()}"/>    
+                                        </div>
+                                    </h:form>
+                                </div>
+                            </h:panelGroup>
+                            <div id="Prime-Selection">
+                                <h:form>
+                                    <p:slideMenu style="width: 100%; height: auto;" backLabel="zurück">
+                                        <p:submenu label="Blumen &amp; Kräuter">
+                                            <p:submenu label="Doldenblütler">
+                                                <p:menuitem value="Anis" ajax="true" actionListener="#{DictionaryBean.loadPlantFromMenu('Anis')}" update="updatable1 updatable2"/>
+                                                <p:menuitem value="Dill" ajax="true" actionListener="#{DictionaryBean.loadPlantFromMenu('Dill')}" update="updatable1 updatable2"/>
+                                                <p:menuitem value="Kerbel" ajax="true" actionListener="#{DictionaryBean.loadPlantFromMenu('Kerbel')}" update="updatable1 updatable2"/>
+                                                <p:menuitem value="Koriander" ajax="true" actionListener="#{DictionaryBean.loadPlantFromMenu('Koriander')}" update="updatable1 updatable2"/>
+                                                <p:menuitem value="Kümmel" ajax="true" actionListener="#{DictionaryBean.loadPlantFromMenu('Kümmel')}" update="updatable1 updatable2"/>
+                                                <p:menuitem value="Liebstöckel" ajax="true" actionListener="#{DictionaryBean.loadPlantFromMenu('Liebstöckel')}" update="updatable1 updatable2"/>
+                                                <p:menuitem value="Petersilie" ajax="true" actionListener="#{DictionaryBean.loadPlantFromMenu('Petersilie')}" update="updatable1 updatable2"/>
+                                            </p:submenu>
+                                            <p:submenu label="Geißblattgewächse">
+                                                <p:menuitem value="Baldrian" ajax="true" actionListener="#{DictionaryBean.loadPlantFromMenu('Baldrian')}" update="updatable1 updatable2"/>
+                                                <p:menuitem value="Karde" ajax="true" actionListener="#{DictionaryBean.loadPlantFromMenu('Karde')}" update="updatable1 updatable2"/>
+                                            </p:submenu>
+                                            <p:submenu label="Korbblütler">
+                                                <p:menuitem value="Alant" ajax="true" actionListener="#{DictionaryBean.loadPlantFromMenu('Alant')}" update="updatable1 updatable2"/>
+                                                <p:menuitem value="Eberraute" ajax="true" actionListener="#{DictionaryBean.loadPlantFromMenu('Eberraute')}" update="updatable1 updatable2"/>
+                                                <p:menuitem value="Estragon" ajax="true" actionListener="#{DictionaryBean.loadPlantFromMenu('Estragon')}" update="updatable1 updatable2"/>
+                                                <p:menuitem value="Kamille" ajax="true" actionListener="#{DictionaryBean.loadPlantFromMenu('Kamille')}" update="updatable1 updatable2"/>
+                                                <p:menuitem value="Ringelblume" ajax="true" actionListener="#{DictionaryBean.loadPlantFromMenu('Ringelblume')}" update="updatable1 updatable2"/>
+                                                <p:menuitem value="Sonnenblume" ajax="true" actionListener="#{DictionaryBean.loadPlantFromMenu('Sonnenblume')}" update="updatable1 updatable2"/>
+                                                <p:menuitem value="Tagetes" ajax="true" actionListener="#{DictionaryBean.loadPlantFromMenu('Tagetes')}" update="updatable1 updatable2"/>
+                                                <p:menuitem value="Wermut" ajax="true" actionListener="#{DictionaryBean.loadPlantFromMenu('Wermut')}" update="updatable1 updatable2"/>
+                                            </p:submenu>
+                                            <p:submenu label="Kreuzblütler">
+                                                <p:menuitem value="Kapuzinerkresse" ajax="true" actionListener="#{DictionaryBean.loadPlantFromMenu('Kapuzinerkresse')}" update="updatable1 updatable2"/>
+                                                <p:menuitem value="Kresse" ajax="true" actionListener="#{DictionaryBean.loadPlantFromMenu('Kresse')}" update="updatable1 updatable2"/>
+                                                <p:menuitem value="Raps" ajax="true" actionListener="#{DictionaryBean.loadPlantFromMenu('Raps')}" update="updatable1 updatable2"/>
+                                                <p:menuitem value="Senf" ajax="true" actionListener="#{DictionaryBean.loadPlantFromMenu('Senf')}" update="updatable1 updatable2"/>
+                                            </p:submenu>
+                                            <p:menuitem value="Lein" ajax="true" actionListener="#{DictionaryBean.loadPlantFromMenu('Lein')}" update="updatable1 updatable2"/>
+                                            <p:submenu label="Lippenblütler">
+                                                <p:menuitem value="Basilikum" ajax="true" actionListener="#{DictionaryBean.loadPlantFromMenu('Basilikum')}" update="updatable1 updatable2"/>
+                                                <p:menuitem value="Bohnenkraut" ajax="true" actionListener="#{DictionaryBean.loadPlantFromMenu('Bohnenkraut')}" update="updatable1 updatable2"/>
+                                                <p:menuitem value="Königskerze" ajax="true" actionListener="#{DictionaryBean.loadPlantFromMenu('Königskerze')}" update="updatable1 updatable2"/>
+                                                <p:menuitem value="Lavendel" ajax="true" actionListener="#{DictionaryBean.loadPlantFromMenu('Lavendel')}" update="updatable1 updatable2"/>
+                                                <p:menuitem value="Majoran" ajax="true" actionListener="#{DictionaryBean.loadPlantFromMenu('Majoran')}" update="updatable1 updatable2"/>
+                                                <p:menuitem value="Melisse" ajax="true" actionListener="#{DictionaryBean.loadPlantFromMenu('Melisse')}" update="updatable1 updatable2"/>
+                                                <p:menuitem value="Minze" ajax="true" actionListener="#{DictionaryBean.loadPlantFromMenu('Minze')}" update="updatable1 updatable2"/>
+                                                <p:menuitem value="Oregano" ajax="true" actionListener="#{DictionaryBean.loadPlantFromMenu('Oregano')}" update="updatable1 updatable2"/>
+                                                <p:menuitem value="Rosmarin" ajax="true" actionListener="#{DictionaryBean.loadPlantFromMenu('Rosmarin')}" update="updatable1 updatable2"/>
+                                                <p:menuitem value="Salbei" ajax="true" actionListener="#{DictionaryBean.loadPlantFromMenu('Salbei')}" update="updatable1 updatable2"/>
+                                                <p:menuitem value="Thymian" ajax="true" actionListener="#{DictionaryBean.loadPlantFromMenu('Thymian')}" update="updatable1 updatable2"/>
+                                                <p:menuitem value="Ysop" ajax="true" actionListener="#{DictionaryBean.loadPlantFromMenu('Ysop')}" update="updatable1 updatable2"/>
+                                            </p:submenu>
+                                            <p:submenu label="Nelkengewächse">
+                                                <p:menuitem value="Nelke" ajax="true" actionListener="#{DictionaryBean.loadPlantFromMenu('Nelke')}" update="updatable1 updatable2"/>
+                                            </p:submenu>
+                                            <p:submenu label="Raublattgewächse">
+                                                <p:menuitem value="Borretsch" ajax="true" actionListener="#{DictionaryBean.loadPlantFromMenu('Borretsch')}" update="updatable1 updatable2"/>
+                                                <p:menuitem value="Phacelia" ajax="true" actionListener="#{DictionaryBean.loadPlantFromMenu('Phacelia')}" update="updatable1 updatable2"/>
+                                            </p:submenu>
+                                            <p:submenu label="Rautengewächse">
+                                                <p:menuitem value="Weinraute" ajax="true" actionListener="#{DictionaryBean.loadPlantFromMenu('Weinraute')}" update="updatable1 updatable2"/>
+                                            </p:submenu>
+                                            <p:submenu label="Rosengewächse">
+                                                <p:menuitem value="Rose" ajax="true" actionListener="#{DictionaryBean.loadPlantFromMenu('Rose')}" update="updatable1 updatable2"/>
+                                            </p:submenu>
+                                        </p:submenu>
+                                        <p:submenu label="Gemüse">
+                                            <p:submenu label="Blattgemüse">
+                                                <p:menuitem value="Amaranth" ajax="true" actionListener="#{DictionaryBean.loadPlantFromMenu('Amaranth')}" update="updatable1 updatable2"/>
+                                                <p:menuitem value="Artischocke" ajax="true" actionListener="#{DictionaryBean.loadPlantFromMenu('Artischocke')}" update="updatable1 updatable2"/>
+                                                <p:menuitem value="Chicoree" ajax="true" actionListener="#{DictionaryBean.loadPlantFromMenu('Chicoree')}" update="updatable1 updatable2"/>
+                                                <p:menuitem value="Endivie" ajax="true" actionListener="#{DictionaryBean.loadPlantFromMenu('Endivie')}" update="updatable1 updatable2"/>
+                                                <p:menuitem value="Feldsalat" ajax="true" actionListener="#{DictionaryBean.loadPlantFromMenu('Feldsalat')}" update="updatable1 updatable2"/>
+                                                <p:menuitem value="Fenchel" ajax="true" actionListener="#{DictionaryBean.loadPlantFromMenu('Fenchel')}" update="updatable1 updatable2"/>
+                                                <p:menuitem value="Mangold" ajax="true" actionListener="#{DictionaryBean.loadPlantFromMenu('Mangold')}" update="updatable1 updatable2"/>
+                                                <p:menuitem value="Radicchio" ajax="true" actionListener="#{DictionaryBean.loadPlantFromMenu('Radicchio')}" update="updatable1 updatable2"/>
+                                                <p:menuitem value="Rukola" ajax="true" actionListener="#{DictionaryBean.loadPlantFromMenu('Rukola')}" update="updatable1 updatable2"/>
+                                                <p:menuitem value="Salat" ajax="true" actionListener="#{DictionaryBean.loadPlantFromMenu('Salat')}" update="updatable1 updatable2"/>
+                                                <p:menuitem value="Sommerportulak" ajax="true" actionListener="#{DictionaryBean.loadPlantFromMenu('Sommerportulak')}" update="updatable1 updatable2"/>
+                                                <p:menuitem value="Spinat" ajax="true" actionListener="#{DictionaryBean.loadPlantFromMenu('Spinat')}" update="updatable1 updatable2"/>
+                                                <p:menuitem value="Tetragonia" ajax="true" actionListener="#{DictionaryBean.loadPlantFromMenu('Tetragonia')}" update="updatable1 updatable2"/>
+                                                <p:menuitem value="Winterportulak" ajax="true" actionListener="#{DictionaryBean.loadPlantFromMenu('Winterportulak')}" update="updatable1 updatable2"/>
+                                            </p:submenu>
+                                            <p:submenu label="Hülsenfrüchte">
+                                                <p:menuitem value="Bohne" ajax="true" actionListener="#{DictionaryBean.loadPlantFromMenu('Bohne')}" update="updatable1 updatable2"/>
+                                                <p:menuitem value="Erbse" ajax="true" actionListener="#{DictionaryBean.loadPlantFromMenu('Erbse')}" update="updatable1 updatable2"/>
+                                                <p:menuitem value="Erdnuss" ajax="true" actionListener="#{DictionaryBean.loadPlantFromMenu('Erdnuss')}" update="updatable1 updatable2"/>
+                                                <p:menuitem value="Kichererbse" ajax="true" actionListener="#{DictionaryBean.loadPlantFromMenu('Kichererbse')}" update="updatable1 updatable2"/>
+                                                <p:menuitem value="Linse" ajax="true" actionListener="#{DictionaryBean.loadPlantFromMenu('Linse')}" update="updatable1 updatable2"/>
+                                                <p:menuitem value="Puffbohne" ajax="true" actionListener="#{DictionaryBean.loadPlantFromMenu('Puffbohne')}" update="updatable1 updatable2"/>
+                                                <p:menuitem value="Sojabohne" ajax="true" actionListener="#{DictionaryBean.loadPlantFromMenu('Sojabohne')}" update="updatable1 updatable2"/>
+                                            </p:submenu>
+                                            <p:submenu label="Kohl">
+                                                <p:menuitem value="Blumenkohl" ajax="true" actionListener="#{DictionaryBean.loadPlantFromMenu('Blumenkohl')}" update="updatable1 updatable2"/>
+                                                <p:menuitem value="Brokkoli" ajax="true" actionListener="#{DictionaryBean.loadPlantFromMenu('Brokkoli')}" update="updatable1 updatable2"/>
+                                                <p:menuitem value="Chinakohl" ajax="true" actionListener="#{DictionaryBean.loadPlantFromMenu('Chinakohl')}" update="updatable1 updatable2"/>
+                                                <p:menuitem value="Kohlrabi" ajax="true" actionListener="#{DictionaryBean.loadPlantFromMenu('Kohlrabi')}" update="updatable1 updatable2"/>
+                                                <p:menuitem value="Kopfkohl" ajax="true" actionListener="#{DictionaryBean.loadPlantFromMenu('Kopfkohl')}" update="updatable1 updatable2"/>
+                                                <p:menuitem value="Krauskohl" ajax="true" actionListener="#{DictionaryBean.loadPlantFromMenu('Krauskohl')}" update="updatable1 updatable2"/>
+                                                <p:menuitem value="Rosenkohl" ajax="true" actionListener="#{DictionaryBean.loadPlantFromMenu('Rosenkohl')}" update="updatable1 updatable2"/>
+                                            </p:submenu>
+                                            <p:submenu label="Kürbisgewächse">
+                                                <p:menuitem value="Gurke" ajax="true" actionListener="#{DictionaryBean.loadPlantFromMenu('Gurke')}" update="updatable1 updatable2"/>
+                                                <p:menuitem value="Kürbis" ajax="true" actionListener="#{DictionaryBean.loadPlantFromMenu('Kürbis')}" update="updatable1 updatable2"/>
+                                                <p:menuitem value="Melone" ajax="true" actionListener="#{DictionaryBean.loadPlantFromMenu('Melone')}" update="updatable1 updatable2"/>
+                                                <p:menuitem value="Zucchini" ajax="true" actionListener="#{DictionaryBean.loadPlantFromMenu('Zucchini')}" update="updatable1 updatable2"/>
+                                            </p:submenu>
+                                            <p:menuitem value="Mais" ajax="true" actionListener="#{DictionaryBean.loadPlantFromMenu('Mais')}" update="updatable1 updatable2"/>
+                                            <p:submenu label="Nachtschattengewächse">
+                                                <p:menuitem value="Aubergine" ajax="true" actionListener="#{DictionaryBean.loadPlantFromMenu('Aubergine')}" update="updatable1 updatable2"/>
+                                                <p:menuitem value="Kartoffel" ajax="true" actionListener="#{DictionaryBean.loadPlantFromMenu('Kartoffel')}" update="updatable1 updatable2"/>
+                                                <p:menuitem value="Paprika" ajax="true" actionListener="#{DictionaryBean.loadPlantFromMenu('Paprika')}" update="updatable1 updatable2"/>
+                                                <p:menuitem value="Physalis" ajax="true" actionListener="#{DictionaryBean.loadPlantFromMenu('Physalis')}" update="updatable1 updatable2"/>
+                                                <p:menuitem value="Tomate" ajax="true" actionListener="#{DictionaryBean.loadPlantFromMenu('Tomate')}" update="updatable1 updatable2"/>
+                                            </p:submenu>
+                                            <p:menuitem value="Spargel" ajax="true" actionListener="#{DictionaryBean.loadPlantFromMenu('Spargel')}" update="updatable1 updatable2"/>
+                                            <p:submenu label="Wurzelgemüse">
+                                                <p:menuitem value="Bete" ajax="true" actionListener="#{DictionaryBean.loadPlantFromMenu('Bete')}" update="updatable1 updatable2"/>
+                                                <p:menuitem value="Haferwurzel" ajax="true" actionListener="#{DictionaryBean.loadPlantFromMenu('Haferwurzel')}" update="updatable1 updatable2"/>
+                                                <p:menuitem value="Meerrettich" ajax="true" actionListener="#{DictionaryBean.loadPlantFromMenu('Meerrettich')}" update="updatable1 updatable2"/>
+                                                <p:menuitem value="Möhre" ajax="true" actionListener="#{DictionaryBean.loadPlantFromMenu('Möhre')}" update="updatable1 updatable2"/>
+                                                <p:menuitem value="Pastinake" ajax="true" actionListener="#{DictionaryBean.loadPlantFromMenu('Pastinake')}" update="updatable1 updatable2"/>
+                                                <p:menuitem value="Sellerie" ajax="true" actionListener="#{DictionaryBean.loadPlantFromMenu('Sellerie')}" update="updatable1 updatable2"/>
+                                                <p:menuitem value="Radieschen" ajax="true" actionListener="#{DictionaryBean.loadPlantFromMenu('Radieschen')}" update="updatable1 updatable2"/>
+                                                <p:menuitem value="Rettich" ajax="true" actionListener="#{DictionaryBean.loadPlantFromMenu('Rettich')}" update="updatable1 updatable2"/>
+                                                <p:menuitem value="Rübe" ajax="true" actionListener="#{DictionaryBean.loadPlantFromMenu('Rübe')}" update="updatable1 updatable2"/>
+                                                <p:menuitem value="Schwarzwurzel" ajax="true" actionListener="#{DictionaryBean.loadPlantFromMenu('Schwarzwurzel')}" update="updatable1 updatable2"/>
+                                                <p:menuitem value="Süßkartoffel" ajax="true" actionListener="#{DictionaryBean.loadPlantFromMenu('Süßkartoffel')}" update="updatable1 updatable2"/>
+                                                <p:menuitem value="Topinambur" ajax="true" actionListener="#{DictionaryBean.loadPlantFromMenu('Topinambur')}" update="updatable1 updatable2"/>
+                                            </p:submenu>
+                                            <p:submenu label="Zwiebelgewächse">
+                                                <p:menuitem value="Bärlauch" ajax="true" actionListener="#{DictionaryBean.loadPlantFromMenu('Bärlauch')}" update="updatable1 updatable2"/>
+                                                <p:menuitem value="Knoblauch" ajax="true" actionListener="#{DictionaryBean.loadPlantFromMenu('Knoblauch')}" update="updatable1 updatable2"/>
+                                                <p:menuitem value="Lauch" ajax="true" actionListener="#{DictionaryBean.loadPlantFromMenu('Lauch')}" update="updatable1 updatable2"/>
+                                                <p:menuitem value="Schnittlauch" ajax="true" actionListener="#{DictionaryBean.loadPlantFromMenu('Schnittlauch')}" update="updatable1 updatable2"/>
+                                                <p:menuitem value="Zwiebel" ajax="true" actionListener="#{DictionaryBean.loadPlantFromMenu('Zwiebel')}" update="updatable1 updatable2"/>
+                                            </p:submenu>
+                                        </p:submenu>
+                                        <p:submenu label="Getreide">
+                                            <p:menuitem value="Amaranth" ajax="true" actionListener="#{DictionaryBean.loadPlantFromMenu('Amaranth')}" update="updatable1 updatable2"/>
+                                            <p:menuitem value="Buchweizen" ajax="true" actionListener="#{DictionaryBean.loadPlantFromMenu('Buchweizen')}" update="updatable1 updatable2"/>
+                                            <p:menuitem value="Hafer" ajax="true" actionListener="#{DictionaryBean.loadPlantFromMenu('Hafer')}" update="updatable1 updatable2"/>
+                                            <p:menuitem value="Hirse" ajax="true" actionListener="#{DictionaryBean.loadPlantFromMenu('Hirse')}" update="updatable1 updatable2"/>
+                                            <p:menuitem value="Mais" ajax="true" actionListener="#{DictionaryBean.loadPlantFromMenu('Mais')}" update="updatable1 updatable2"/>
+                                        </p:submenu>
+                                        <p:submenu label="Obst">
+                                            <p:menuitem value="Erdbeere" ajax="true" actionListener="#{DictionaryBean.loadPlantFromMenu('Erdbeere')}" update="updatable1 updatable2"/>
+                                            <p:menuitem value="Rhabarber" ajax="true" actionListener="#{DictionaryBean.loadPlantFromMenu('Rhabarber')}" update="updatable1 updatable2"/>
+                                        </p:submenu>
+                                    </p:slideMenu>
+                                </h:form>
+                            </div>
+                        </div>
+                        <div id="Plant-Profile">
+                            <h:panelGroup id="updatable2">
+                                <h2 align="center">Steckbrief</h2>
+                                <table id="Plant-Profile-Table" width="100%">
+                                    <!--Name-->
+                                    <ui:fragment rendered="#{DictionaryBean.plantToShow.name != 'default'}">
+                                        <tr>
+                                            <td colspan="2" style="text-align: center">
+                                                <h2 style="margin-bottom: 0">#{DictionaryBean.plantToShow.name}</h2>
+                                            </td>
+                                        </tr>
+                                    </ui:fragment>
+                                    <!--Picture-->
+                                    <ui:fragment rendered="#{DictionaryBean.plantToShow.picture != ''}">
+                                        <tr>
+                                            <td colspan="2" style="text-align: center">
+                                                <figure>
+                                                    <img src="./images/plants/#{DictionaryBean.plantToShow.picture}" width="200px" height="200px"/>
+                                                </figure>
+                                            </td>
+                                        </tr>
+                                    </ui:fragment>
+                                    <!--Synonyms-->
+                                    <ui:fragment rendered="#{DictionaryBean.plantToShow.synonymsString != ''}">
+                                        <tr>
+                                            <td>Unterarten und Synonyme: </td>
+                                            <td>#{DictionaryBean.plantToShow.synonymsString}</td>
+                                        </tr>
+                                    </ui:fragment>
+                                    <!--Good_Neighbors-->
+                                    <ui:fragment rendered="#{DictionaryBean.plantToShow.name != 'default'}">
+                                        <tr>
+                                            <td>Gute Nachbarn: </td>
+                                            <td>#{DictionaryBean.plantToShow.goodNeighborsString}</td>
+                                        </tr>
+                                    </ui:fragment>
+                                    <!--Bad_Neighbors-->
+                                    <ui:fragment rendered="#{DictionaryBean.plantToShow.name != 'default'}">
+                                        <tr>
+                                            <td>Schlechte Nachbarn: </td>
+                                            <td>#{DictionaryBean.plantToShow.badNeighborsString}</td>
+                                        </tr>
+                                    </ui:fragment>
+                                    <!--Ground-->
+                                    <ui:fragment rendered="#{DictionaryBean.plantToShow.ground != ''}">
+                                        <tr>
+                                            <td>Boden: </td>
+                                            <td>#{DictionaryBean.plantToShow.ground}</td>
+                                        </tr>
+                                    </ui:fragment>
+                                    <!--Sowing_Time-->
+                                    <ui:fragment rendered="#{DictionaryBean.plantToShow.sowing_time_in != ''}">
+                                        <tr>
+                                            <td>Voranzucht: </td>
+                                            <td>#{DictionaryBean.plantToShow.sowing_time_in}</td>
+                                        </tr>
+                                    </ui:fragment>
+                                    <!--Plant_Time-->
+                                    <ui:fragment rendered="#{DictionaryBean.plantToShow.plant_time != ''}">
+                                        <tr>
+                                            <td>Auspflanzen: </td>
+                                            <td>#{DictionaryBean.plantToShow.plant_time}</td>
+                                        </tr>
+                                    </ui:fragment>
+                                    <!--Sowing_Time_out-->
+                                    <ui:fragment rendered="#{DictionaryBean.plantToShow.sowing_time_out != ''}">
+                                        <tr>
+                                            <td>Aussaat (Freiland): </td>
+                                            <td>#{DictionaryBean.plantToShow.sowing_time_out}</td>
+                                        </tr>
+                                    </ui:fragment>
+                                    <!--Harvest_Time-->
+                                    <ui:fragment rendered="#{DictionaryBean.plantToShow.harvest_time != ''}">
+                                        <tr>
+                                            <td>Ernte: </td>
+                                            <td>#{DictionaryBean.plantToShow.harvest_time}</td>
+                                        </tr>
+                                    </ui:fragment>
+                                    <!--Sowing_Depth-->
+                                    <ui:fragment rendered="#{DictionaryBean.plantToShow.sowing_depth != ''}">
+                                        <tr>
+                                            <td>Aussaattiefe (cm): </td>
+                                            <td>#{DictionaryBean.plantToShow.sowing_depth}</td>
+                                        </tr>
+                                    </ui:fragment>
+                                    <!--Germination-->
+                                    <ui:fragment rendered="#{DictionaryBean.plantToShow.germination != ''}">
+                                        <tr>
+                                            <td>Keimdauer (Tage): </td>
+                                            <td>#{DictionaryBean.plantToShow.germination}</td>
+                                        </tr>
+                                    </ui:fragment>
+                                    <!--Space-->
+                                    <ui:fragment rendered="#{DictionaryBean.plantToShow.space != ''}">
+                                        <tr>
+                                            <td>Platzbedarf (cm x cm): </td>
+                                            <td>#{DictionaryBean.plantToShow.space}</td>
+                                        </tr>
+                                    </ui:fragment>
+                                </table>
+                                <ui:include src="#{('plantProfiles/').concat(DictionaryBean.plantToShow.profile_file).concat('.xhtml')}" />
+                            </h:panelGroup>
+                        </div>
+                    </div>    
+                </main>
+            </div>   
+        <ui:include src="footer.xhtml"/>
+    </h:body>
+</html>

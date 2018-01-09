@@ -1,0 +1,170 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <meta name="description" content="Der Mischbeet-Planer hilft dir dein Mischbeet optimal zu planen indem er deine aktuelle Auswahl als Mischbeet bewertet und dir Tipps zur weiteren Bepflanzung gibt.
+                            Im Auswahlfeld kannst du dir alle Pflanzen anzeigen lassen und aus der Liste die Passende auswählen. Außerdem kannst du einen Filtertext eingeben und so die Anzahl der Ergebnisse verringern.
+                            Mit einem Klick auf 'Laden' fügst du die Pflanze deiner Auswahl hinzu." />
+        <ui:include src="newHead.xhtml"/>
+        <title>MyPlantParadise - Mischbeetplaner für gute Nachbarschaft im Garten</title>
+    </h:head>
+    <h:body>
+        <header><img src="images/logo.png"></img></header>
+        <h:panelGroup id="updatable">
+            <div id="NavLEqualsMainL">
+                <nav>
+                    <ui:include src="navigation.xhtml">
+                        <ui:param name="active" value="Evaluator"/>
+                    </ui:include>
+                </nav>
+                <main>
+                    <div class="Description">
+                        <p>
+                            Der Mischbeet-Planer hilft dir dein Mischbeet optimal zu planen indem er deine aktuelle Auswahl als Mischbeet bewertet und dir Tipps zur weiteren Bepflanzung gibt.<br/>
+                            Im Auswahlfeld kannst du dir alle Pflanzen anzeigen lassen und aus der Liste die Passende auswählen. Außerdem kannst du einen Filtertext eingeben und so die Anzahl der Ergebnisse verringern.
+                            Mit einem Klick auf "Laden" fügst du die Pflanze deiner Auswahl hinzu.
+                        </p>
+                    </div>
+                    <div id="Load-Overview">
+                        <div id="Loader">
+                            <caption><h2 style="font-size: 160%">Pflanze eingeben</h2></caption>
+                            <h:form>
+                                <p:autoComplete size="26" scrollHeight="250" panelStyleClass="panel" dropdown="true" value="#{EvaluatorBean.selectedPlant}" completeMethod="#{EvaluatorBean.completeText}"/>
+                                <br/>
+                                <p:commandButton ajax="true" update="updatable" class="button" value="Laden" action="#{EvaluatorBean.loadPlantForTable()}"/>    
+                                <br id="br2"/>
+                                <p:commandButton ajax="true" update="updatable" class="button" value="Zurücksetzen" action="#{EvaluatorBean.reset()}">
+                                    <p:confirm header="Bestätigung" message="Möchtest du deine Auswahl wirklich komplett zurücksetzen?" icon="ui-icon-help"/>
+                                </p:commandButton>
+                                <p:confirmDialog global="true" showEffect="fade" hideEffect="fade" style="background: rgb(217, 255, 179); border-radius: 10px;">
+                                    <p:commandButton value="Ja" styleClass="ui-confirmdialog-yes button" ajax="true" />
+                                    <p:commandButton value="Nein" styleClass="ui-confirmdialog-no button" ajax="true" />
+                                </p:confirmDialog>
+                            </h:form>
+                            <div id="Evaluator-Legend">
+                                <table id="Evaluator-Legend-Table" border="0">
+                                    <tr>
+                                        <td style="background-color: rgba(0, 153, 0, 0.8); min-width: 0.7cm; border: 1px solid rgba(4, 36, 4, 0.72);"></td>
+                                        <td>guter Nachbar</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="background-color: rgba(139, 0, 0, 0.8); min-width: 0.7cm; border: 1px solid rgba(4, 36, 4, 0.72);"></td>
+                                        <td>schlechter Nachbar</td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                        <div id="Overview">
+                            <table id="Overview-Table" border="0" width="100%">
+                                <caption><h2>Pflanzen im Beet</h2></caption>
+                                <tr>
+                                    <th width="66%" align="center">Name</th>
+                                    <th width="34%" align="center">Entfernen</th>
+                                </tr>
+                                <ui:repeat value="#{EvaluatorBean.selectedPlants}" var="plant" varStatus="count">
+                                    <tr>
+                                        <td>#{plant.name}</td>
+                                        <td align="center">
+                                            <h:form>
+                                                <p:commandButton ajax="true" update="updatable" class="button" value="Entfernen" action="#{EvaluatorBean.remove(count.index)}"/>
+                                            </h:form>
+                                        </td>
+                                    </tr>
+                                </ui:repeat>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="Single">
+                        <div id="Evaluator-Value">
+                            <table border="0" align="center" height="5cm" style="background-color: rgb(#{EvaluatorBean.red}, #{EvaluatorBean.green}, 0)">
+                                <caption><h2 style="white-space: nowrap">Mischbeet Bewertung</h2></caption>
+                                <tr>
+                                    <th style="font-size: 500%" align="center">
+                                        <strong>#{EvaluatorBean.evaluationValue}%</strong>
+                                    </th>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="Dual">
+                        <div class="Left">
+                            <caption><h2 align="center">Folgende Pflanzentypen würden das Beet gut ergänzen:</h2></caption>
+                            <div style="max-height: 400px; overflow-y: auto; display: block" class="scrollable">
+                                <table border="0" align="center">
+                                    <ui:repeat value="#{EvaluatorBean.goodSuggestions}" var="plant" varStatus="count">
+                                        <tr>
+                                            <td width="45%"><strong>#{plant.plant.name}</strong></td>
+                                            <td width="10%"><strong>#{plant.goodNr} x</strong></td>
+                                            <td width="25%"><div style="display:inline-block;width:30px;height:22px;border:1px solid rgba(4, 36, 4, 0.72); background-color: rgba(0, 153, 0, 0.8)"/></td>
+                                            <td width="10%"><strong>#{plant.badNr} x</strong></td>
+                                            <td width="10%"><div style="display:inline-block;width:30px;height:22px;border:1px solid rgba(4, 36, 4, 0.72); background-color: rgba(139, 0, 0, 0.8)"/></td>
+                                        </tr>
+                                    </ui:repeat>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="Right">
+                            <caption><h2 align="center">Folgende Pflanzentypen passen nicht in das Beet:</h2></caption>
+                            <div style="max-height: 400px; overflow-y: auto; display: block" class="scrollable">
+                                <table border="0" align="center">
+                                    <ui:repeat value="#{EvaluatorBean.badSuggestions}" var="plant" varStatus="count">
+                                        <tr>
+                                            <td width="45%"><strong>#{plant.plant.name}</strong></td>
+                                            <td width="10%"><strong>#{plant.goodNr} x</strong></td>
+                                            <td width="25%"><div style="display:inline-block;width:30px;height:22px;border:1px solid rgba(4, 36, 4, 0.72); background-color: rgba(0, 153, 0, 0.8)"/></td>
+                                            <td width="10%"><strong>#{plant.badNr} x</strong></td>
+                                            <td width="10%"><div style="display:inline-block;width:30px;height:22px;border:1px solid rgba(4, 36, 4, 0.72); background-color: rgba(139, 0, 0, 0.8)"/></td>
+                                        </tr>
+                                    </ui:repeat>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="Neighbortable" style="padding-top: 1cm">
+                        <table border="0" id="Neighbortable-Table" align="center">  
+                            <caption><h2 style="white-space: nowrap">Nachbarschafts-Tabelle</h2></caption>
+                            <ui:repeat value="#{EvaluatorBean.neighborTable}" var="firstLevel" varStatus="count">
+                                <tr id="tr-#{count.index}">                           
+                                    <ui:repeat value="#{firstLevel}" var="secondLevel" rendered="#{!empty  firstLevel}">
+                                        <ui:fragment rendered="#{secondLevel=='bad' or secondLevel=='ok' or secondLevel=='good' or secondLevel=='equal'}">
+                                            <td id="#{secondLevel}"><div class="NBT-#{count.index}"></div></td>
+                                        </ui:fragment>
+                                        <ui:fragment rendered="#{secondLevel!='bad' and secondLevel!='ok' and secondLevel!='good' and secondLevel!='equal'}">
+                                            <th>
+                                                <div class="NBT-#{count.index}">#{secondLevel}</div>
+                                                <ui:fragment rendered="#{secondLevel==''}">
+                                                    <table id="Neighbortable-Legend" border="0" style="margin:0 auto 2.5cm auto;">
+                                                        <tr>
+                                                            <td></td>
+                                                            <td>guter Nachbar</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td></td>
+                                                            <td>neutraler Nachbar</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td></td>
+                                                            <td>schlechter Nachbar</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td></td>
+                                                            <td>gleiche Pflanze</td>
+                                                        </tr>
+                                                    </table>
+                                                </ui:fragment>
+                                            </th>
+                                        </ui:fragment>
+                                    </ui:repeat>
+                                </tr>
+                            </ui:repeat>
+                        </table>
+                    </div>
+                </main>
+            </div>
+        </h:panelGroup>
+        <ui:include src="footer.xhtml"/>
+    </h:body>
+</html>

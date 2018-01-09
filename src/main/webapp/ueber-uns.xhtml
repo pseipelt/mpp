@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <ui:include src="newHead.xhtml"/>
+        <title>MyPlantParadise - Das sind wir</title>
+    </h:head>
+    <h:body>
+        <header><img src="images/logo.png"></img></header>
+        <div id="NavLEqualsMainL">
+            <nav>
+                <ui:include src="navigation.xhtml">
+                    <ui:param name="active" value="About"/>
+                </ui:include>
+            </nav>
+            <main>
+                <div class="About">
+                    <h2 style="text-align: center;">Pascal</h2>
+                    <p>
+                        <img src="images/pascal.png" style="float:right; margin-left: 15px;"/>
+                        Mein Name ist Pascal und ich bin der Programmierer von MyPlantParadise.<br/>
+                        Momentan studiere ich Informatik an der Uni Bonn und stehe kurz vor meinem Bachelorabschluss.<br/>
+                        Im Januar 2015 begann ich mich gemeinsam mit meiner Freundin für das Thema Ernährung zu interessieren,
+                        wodurch wir zu der Meinung gekommen sind, dass es am besten ist seine Nahrung so weit wie möglich selbst zu produzieren.
+                        In der Gartensaison 2016 haben wir deshalb eine kleine Ackerparzelle von zunächst 42 und später 84 Quadratmetern gemietet und bewirtschaftet.
+                        Dies hat uns so viel Freude bereitet, dass wir ab 2017 eine Fläche von ca. 500 Quadratmetern bei meinem Vater bepflanzen werden.<br/>
+                        Aus der Saison 2016 kannte ich bereits das Prinzip von guten und schlechten Nachbarschaften in der Pflanzenwelt
+                        und begann mich während der Beetplanung für 2017 mehr und mehr dafür und für die Artenvielfalt zu interessieren.<br/>
+                        Um Programmiererfahrung zu sammeln wollte ich zudem ein nützliches Tool entwerfen und bin dabei auf die Idee gekommen eine interaktive Nachbarschaftstabelle zu entwickeln.<br/>
+                        Aus dieser Idee entstand dann die Website auf der du dich gerade befindest: MyPlantParadise.
+                    </p>
+                </div>
+                <!--<div id="About-Jasmin">
+                    <h2>Jasmin</h2>
+                    <p>
+                        Hallo, ich bin die Redakteurin und kümmere mich um die Blogeinträge von MyPlantParadise.
+                    </p>
+                </div>-->
+            </main>
+        </div>
+        <ui:include src="footer.xhtml"/>
+    </h:body>
+</html>

@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <ui:include src="head.xhtml"/>
+        <title>MyPlantParadise - Linksammlung rund ums Thema Garten</title>
+    </h:head>
+    <h:body>
+        <header><img src="images/logo.png"></img></header>
+        <div id="NavLEqualsMainL">
+            <nav>
+                <ui:include src="navigation.xhtml">
+                    <ui:param name="active" value="Links"/>
+                </ui:include>
+            </nav>
+            <main>
+                <div id="Links">
+                    <div id="Links-SP">
+                        <h2>Saatgut &#38; Pflanzen</h2>
+                        <p>
+                            <a href=""><div></div></a><!--preventing bug, no idea why-->
+                            <a target="_blank" href="http://www.dreschflegel-shop.de/"><div class="Nav-Button">Dreschflegel</div></a>
+                            <a target="_blank" href="http://www.magicgardenseeds.de/"><div class="Nav-Button">Magic Garden Seeds</div></a>
+                            <a target="_blank" href="http://exotic-samen.de/"><div class="Nav-Button">exotic-samen</div></a>
+                            <a target="_blank" href="https://www.samenchilishop.de/"><div class="Nav-Button">Samenchilishop</div></a>
+                            <a target="_blank" href="https://www.ackerhelden.de/bio-saatgut/"><div class="Nav-Button">Ackerhelden</div></a>
+                            <a target="_blank" href="http://www.kraeuter-und-duftpflanzen.de/"><div class="Nav-Button">Rühlemann's</div></a>
+                            <a target="_blank" href="https://www.gartenrot.com/"><div class="Nav-Button">Gartenrot</div></a>
+                        </p>
+                    </div>
+                </div>
+            </main>
+        </div>
+        <ui:include src="footer.xhtml"/>
+    </h:body>
+</html>
