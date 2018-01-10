@@ -1,12 +1,11 @@
 package de.myplantparadise.mpp.MPPBeans;
 
-import de.myplantparadise.mpp.DataStorage.BioPlant;
-import de.myplantparadise.mpp.DataStorage.Plants;
+import de.myplantparadise.mpp.DataStorage.Plant;
+import de.myplantparadise.mpp.DataStorage.PlantStorage;
 import de.myplantparadise.mpp.Utils.ArrayUtil;
-import de.myplantparadise.mpp.Utils.BioPlantWithAmount;
+import de.myplantparadise.mpp.Utils.PlantWithAmount;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.inject.Named;
@@ -16,12 +15,12 @@ import javax.enterprise.context.SessionScoped;
 @SessionScoped
 public class PlannerBean {
     ArrayUtil array_util = new ArrayUtil();
-    private Plants storage = new Plants(); 
+    private PlantStorage storage = new PlantStorage(); 
     
     List<String> listOfAllPlantNames = new ArrayList<>();
     private String selectedPlant = "";
     
-    private List<BioPlantWithAmount> selectedPlants = new ArrayList();
+    private List<PlantWithAmount> selectedPlants = new ArrayList();
     List<String> plantRows = new ArrayList<>();
     
     private final String GREEN = "rgba(0, 153, 0, 0.8)";
@@ -45,10 +44,10 @@ public class PlannerBean {
     }
     
     public String loadPlantForTable() {
-        BioPlant plantToAdd = storage.getPlantByName(selectedPlant);
+        Plant plantToAdd = storage.getPlantByName(selectedPlant);
         boolean plantAlreadyAdded = false;
         if(plantToAdd != null) {
-            for(BioPlantWithAmount plant : selectedPlants) {
+            for(PlantWithAmount plant : selectedPlants) {
                 if(plant.getPlant().equals(plantToAdd)) {
                     plant.addToAmount(1);
                     plantAlreadyAdded = true;
@@ -56,7 +55,7 @@ public class PlannerBean {
                 }
             }
             if(!plantAlreadyAdded) {
-                selectedPlants.add(new BioPlantWithAmount(plantToAdd, 1));
+                selectedPlants.add(new PlantWithAmount(plantToAdd, 1));
             }
             actualizeRowTable();
         }
@@ -76,10 +75,10 @@ public class PlannerBean {
     public void actualizeRowTable(){
         //prepare data
         plantRows.clear();
-        List<BioPlant> unsortedPlantRows = getAllPlantRows(); //used for backup if sorting fails
+        List<Plant> unsortedPlantRows = getAllPlantRows(); //used for backup if sorting fails
         
         //in this case we will use amount for the evaluation value
-        List<BioPlant> evaluatedPlantRows = evaluate(unsortedPlantRows);
+        List<Plant> evaluatedPlantRows = evaluate(unsortedPlantRows);
         
         //run through plantList until a combination is found
         int numberOfTurns = 0;
@@ -94,7 +93,7 @@ public class PlannerBean {
                 evaluatedPlantRows = evaluate(evaluatedPlantRows);
                 boolean foundNeighborThisTurn = false;
                 //search for good neighbor
-                for(BioPlant plant : evaluatedPlantRows) {
+                for(Plant plant : evaluatedPlantRows) {
                     if(plant.getGoodNeighbors().contains(plantRows.get(plantRows.size() - 1))) {
                         plantRows.add(GREEN);
                         plantRows.add(plant.getName());
@@ -105,7 +104,7 @@ public class PlannerBean {
                 }
                 //search for neutral neighbor if no good one was found
                 if(!foundNeighborThisTurn) {
-                    for(BioPlant plant : evaluatedPlantRows) {
+                    for(Plant plant : evaluatedPlantRows) {
                         if(!plant.getBadNeighbors().contains(plantRows.get(plantRows.size() - 1))) {
                             plantRows.add(YELLOW);
                             plantRows.add(plant.getName());
@@ -137,24 +136,24 @@ public class PlannerBean {
         }
     }
     
-    private List<BioPlant> evaluate(List<BioPlant> plants){
-        List<BioPlantWithAmount> sortedPlantList = new ArrayList();
-        for(BioPlant plant : plants) {
+    private List<Plant> evaluate(List<Plant> plants){
+        List<PlantWithAmount> sortedPlantList = new ArrayList();
+        for(Plant plant : plants) {
             int evaluationValue = 0; //high value will indicate a bad neighbor
-            for(BioPlant comparationPlant : plants) {
+            for(Plant comparationPlant : plants) {
                 if (comparationPlant.getBadNeighbors().contains(plant.getName())) {
                     evaluationValue += 2;
                 } else if (!comparationPlant.getGoodNeighbors().contains(plant.getName())) {
                     evaluationValue += 1;
                 }
             }
-            sortedPlantList.add(new BioPlantWithAmount(plant, evaluationValue));
+            sortedPlantList.add(new PlantWithAmount(plant, evaluationValue));
         }
         
         //sortedPlantList.sort(Comparator.comparingInt(BioPlantWithAmount::getAmount));
         
-        List<BioPlant> returnList = new ArrayList();
-        for(BioPlantWithAmount plant : sortedPlantList) {
+        List<Plant> returnList = new ArrayList();
+        for(PlantWithAmount plant : sortedPlantList) {
             returnList.add(plant.getPlant());
         }
         //list is sorted with good neighbors first so we need to reverse it
@@ -162,9 +161,9 @@ public class PlannerBean {
         return returnList;
     }
     
-    private List<BioPlant> getAllPlantRows() {
-        List<BioPlant> tmp = new ArrayList();
-        for(BioPlantWithAmount plant : selectedPlants) {
+    private List<Plant> getAllPlantRows() {
+        List<Plant> tmp = new ArrayList();
+        for(PlantWithAmount plant : selectedPlants) {
             for(int i = 0; i < plant.getAmount(); i++) {
                 tmp.add(plant.getPlant());
             }
@@ -196,7 +195,7 @@ public class PlannerBean {
         return selectedPlant;
     }
 
-    public List<BioPlantWithAmount> getSelectedPlants() {
+    public List<PlantWithAmount> getSelectedPlants() {
         return selectedPlants;
     }
 

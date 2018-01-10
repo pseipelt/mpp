@@ -3,6 +3,7 @@ package de.myplantparadise.mpp.MPPBeans;
 import de.myplantparadise.mpp.DataStorage.Plant;
 import de.myplantparadise.mpp.DataStorage.PlantStorage;
 import de.myplantparadise.mpp.Utils.PlantWithNeighborStats;
+import de.myplantparadise.mpp.Utils.SortUtil;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -100,10 +101,8 @@ public class EvaluatorBean {
             }
         }
         //sort the result Lists so that extreme values come first
-        //goodSuggestions.sort(Comparator.comparingInt(PlantWithNeighborStats::getSortIndicatorGood));
-        Collections.reverse(goodSuggestions);
-        //badSuggestions.sort(Comparator.comparingInt(PlantWithNeighborStats::getSortIndicatorBad));
-        Collections.reverse(badSuggestions);
+        goodSuggestions = SortUtil.sortByGoodNeighbor(goodSuggestions);
+        badSuggestions = SortUtil.sortByGoodNeighbor(badSuggestions);
     }
     
     public void evaluate(){

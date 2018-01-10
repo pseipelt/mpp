@@ -29,12 +29,20 @@ public class PlantWithNeighborStats {
         return badNr;
     }
 
+    public Integer getBadNrToCompare() {
+        return - badNr;
+    }
+    
     public void setBadNr(int badNr) {
         this.badNr = badNr;
     }
 
-    public int getGoodNr() {
+    public Integer getGoodNr() {
         return goodNr;
+    }
+    
+    public Integer getGoodNrToCompare() {
+        return - goodNr;
     }
 
     public void setGoodNr(int goodNr) {
