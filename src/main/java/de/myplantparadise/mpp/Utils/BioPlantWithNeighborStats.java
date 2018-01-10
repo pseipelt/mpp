@@ -1,6 +1,6 @@
-package Utils;
+package de.myplantparadise.mpp.Utils;
 
-import DataStorage.BioPlant;
+import de.myplantparadise.mpp.DataStorage.BioPlant;
 
 /**
  *

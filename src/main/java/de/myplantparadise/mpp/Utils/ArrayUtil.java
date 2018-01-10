@@ -1,4 +1,4 @@
-package Utils;
+package de.myplantparadise.mpp.Utils;
 
 /**
  *

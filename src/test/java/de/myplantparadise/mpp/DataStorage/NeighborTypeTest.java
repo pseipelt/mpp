@@ -1,4 +1,4 @@
-package DataStorage;
+package de.myplantparadise.mpp.DataStorage;
 
 import java.util.ArrayList;
 import java.util.List;

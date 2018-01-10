@@ -1,18 +1,18 @@
 package de.myplantparadise.mpp.MPPBeans;
 
-import DataStorage.BioPlant;
-import DataStorage.Plants;
-import Utils.ArrayUtil;
-import Utils.BioPlantWithAmount;
+import de.myplantparadise.mpp.DataStorage.BioPlant;
+import de.myplantparadise.mpp.DataStorage.Plants;
+import de.myplantparadise.mpp.Utils.ArrayUtil;
+import de.myplantparadise.mpp.Utils.BioPlantWithAmount;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import javax.annotation.PostConstruct;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
+import javax.inject.Named;
+import javax.enterprise.context.SessionScoped;
 
-@ManagedBean(name="PlannerBean")
+@Named(value = "PlannerBean")
 @SessionScoped
 public class PlannerBean {
     ArrayUtil array_util = new ArrayUtil();

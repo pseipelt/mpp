@@ -1,17 +1,17 @@
 package de.myplantparadise.mpp.MPPBeans;
 
-import DataStorage.BioPlant;
-import DataStorage.Plants;
-import Utils.BioPlantWithNeighborStats;
+import de.myplantparadise.mpp.DataStorage.BioPlant;
+import de.myplantparadise.mpp.DataStorage.Plants;
+import de.myplantparadise.mpp.Utils.BioPlantWithNeighborStats;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import javax.annotation.PostConstruct;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
+import javax.inject.Named;
+import javax.enterprise.context.SessionScoped;
 
-@ManagedBean(name="EvaluatorBean")
+@Named(value = "EvaluatorBean")
 @SessionScoped
 public class EvaluatorBean {
     private int evaluationValue;

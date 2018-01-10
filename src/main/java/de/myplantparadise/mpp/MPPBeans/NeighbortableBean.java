@@ -1,7 +1,7 @@
-package MPPBeans;
+package de.myplantparadise.mpp.MPPBeans;
 
-import DataStorage.BioPlant;
-import DataStorage.Plants;
+import de.myplantparadise.mpp.DataStorage.BioPlant;
+import de.myplantparadise.mpp.DataStorage.Plants;
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.PostConstruct;

@@ -1,15 +1,15 @@
-package MPPBeans;
+package de.myplantparadise.mpp.MPPBeans;
 
-import DataStorage.BioPlant;
-import DataStorage.Plants;
+import de.myplantparadise.mpp.DataStorage.BioPlant;
+import de.myplantparadise.mpp.DataStorage.Plants;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import javax.annotation.PostConstruct;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
+import javax.enterprise.context.SessionScoped;
+import javax.inject.Named;
 
-@ManagedBean(name="SeasonsBean")
+@Named(value = "SeasonsBean")
 @SessionScoped
 public class SeasonsBean {
     private String selectedPlant = "";
