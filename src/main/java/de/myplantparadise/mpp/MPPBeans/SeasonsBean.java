@@ -1,7 +1,7 @@
 package de.myplantparadise.mpp.MPPBeans;
 
-import de.myplantparadise.mpp.DataStorage.BioPlant;
-import de.myplantparadise.mpp.DataStorage.Plants;
+import de.myplantparadise.mpp.DataStorage.Plant;
+import de.myplantparadise.mpp.DataStorage.PlantStorage;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -15,7 +15,7 @@ public class SeasonsBean {
     private String selectedPlant = "";
     
     private List<String> listOfAllPlantNames;
-    private List<BioPlant> selectedPlants = new ArrayList();
+    private List<Plant> selectedPlants = new ArrayList();
     private String[][] seasons = new String[0][0];
     private final String[] dates = {"AJanuar", "MJanuar", "EJanuar", "AFebruar", "MFebruar", "EFebruar",
                               "AMärz", "MMärz", "EMärz", "AApril", "MApril", "EApril", "AMai", "MMai", "EMai",
@@ -24,7 +24,7 @@ public class SeasonsBean {
                               "ANovember", "MNovember", "ENovember", "ADezember", "MDezember", "EDezember",};
     private final String[] dummyArray = new String[36];//used to loop over 36 td's
    
-    private Plants storage = new Plants(); 
+    private PlantStorage storage = new PlantStorage(); 
    
     @PostConstruct
     public void init() {
@@ -67,7 +67,7 @@ public class SeasonsBean {
     }
     
     public String loadPlantForTable() {
-        BioPlant plantToAdd = storage.getPlantByName(selectedPlant);
+        Plant plantToAdd = storage.getPlantByName(selectedPlant);
         if(plantToAdd != null && !selectedPlants.contains(plantToAdd)){
             selectedPlants.add(plantToAdd);
             loadSeasonsTable();
@@ -118,11 +118,11 @@ public class SeasonsBean {
         this.listOfAllPlantNames = listOfAllPlantNames;
     }
 
-    public List<BioPlant> getSelectedPlants() {
+    public List<Plant> getSelectedPlants() {
         return selectedPlants;
     }
 
-    public void setSelectedPlants(List<BioPlant> selectedPlants) {
+    public void setSelectedPlants(List<Plant> selectedPlants) {
         this.selectedPlants = selectedPlants;
     }
 

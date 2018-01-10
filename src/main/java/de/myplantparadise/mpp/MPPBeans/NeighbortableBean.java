@@ -1,7 +1,7 @@
 package de.myplantparadise.mpp.MPPBeans;
 
-import de.myplantparadise.mpp.DataStorage.BioPlant;
-import de.myplantparadise.mpp.DataStorage.Plants;
+import de.myplantparadise.mpp.DataStorage.Plant;
+import de.myplantparadise.mpp.DataStorage.PlantStorage;
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.PostConstruct;
@@ -15,10 +15,10 @@ public class NeighbortableBean {
     private List<String> listOfAllPlantNames;
     private String selectedPlant = "";
     
-    private List<BioPlant> selectedPlants = new ArrayList();
+    private List<Plant> selectedPlants = new ArrayList();
     private String[][] neighborTable = new String[0][0];
     
-    private Plants storage = new Plants(); 
+    private PlantStorage storage = new PlantStorage(); 
     
     @PostConstruct
     public void init() {
@@ -37,7 +37,7 @@ public class NeighbortableBean {
     }
     
     public String loadPlantForTable() {
-        BioPlant plantToAdd = storage.getPlantByName(selectedPlant);
+        Plant plantToAdd = storage.getPlantByName(selectedPlant);
         if(plantToAdd != null && !selectedPlants.contains(plantToAdd)){
             selectedPlants.add(plantToAdd);
             actualizeNeighborTable();
@@ -53,16 +53,16 @@ public class NeighbortableBean {
             
             //fill row and column names 
             int counter = 1;
-            for(BioPlant plant : this.selectedPlants){
+            for(Plant plant : this.selectedPlants){
                 this.neighborTable[0][counter] = plant.getName();
                 this.neighborTable[counter][0] = plant.getName();
                 counter++;
             }
             
             int row = 1;
-            for(BioPlant plantRow : this.selectedPlants){
+            for(Plant plantRow : this.selectedPlants){
                 int column = 1;
-                for(BioPlant plantColumn : this.selectedPlants){
+                for(Plant plantColumn : this.selectedPlants){
                     if(plantRow.equals(plantColumn)){
                         this.neighborTable[row][column] = "equal";
                     }
@@ -109,7 +109,7 @@ public class NeighbortableBean {
         return selectedPlant;
     }
 
-    public List<BioPlant> getSelectedPlants() {
+    public List<Plant> getSelectedPlants() {
         return selectedPlants;
     }
 

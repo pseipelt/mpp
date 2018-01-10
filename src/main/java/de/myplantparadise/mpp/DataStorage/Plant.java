@@ -7,7 +7,7 @@ import java.util.List;
 /**
  * @author Pascal
  */
-public class BioPlant {
+public class Plant {
     //create variables
     private String name = "";
     private List<String> synonyms = new ArrayList();
@@ -28,11 +28,11 @@ public class BioPlant {
     private String picture = "";
     private String profile_file = "default";
     
-    public BioPlant(String name) {
+    public Plant(String name) {
         this.name = name;
     }
     
-    public BioPlant() {
+    public Plant() {
         
     }
     //getter & setter
@@ -67,7 +67,7 @@ public class BioPlant {
         return name;
     }
 
-    public BioPlant setName(String name) {
+    public Plant setName(String name) {
         this.name = name;
         this.neighbor_type = new NeighborType(name);
         return this;
@@ -81,7 +81,7 @@ public class BioPlant {
         return synonyms;
     }
    
-    public BioPlant addToSynonyms(String... sorts) {
+    public Plant addToSynonyms(String... sorts) {
         this.synonyms.addAll(Arrays.asList(sorts));
         return this;
     }
@@ -90,7 +90,7 @@ public class BioPlant {
         return ground;
     }
 
-    public BioPlant setGround(String ground) {
+    public Plant setGround(String ground) {
         this.ground = ground;
         return this;
     }
@@ -99,7 +99,7 @@ public class BioPlant {
         return sowing_time_in;
     }
 
-    public BioPlant setSowing_time_in(String sowing_time_in) {
+    public Plant setSowing_time_in(String sowing_time_in) {
         this.sowing_time_in = sowing_time_in;
         return this;
     }
@@ -108,7 +108,7 @@ public class BioPlant {
         return plant_time;
     }
 
-    public BioPlant setPlant_time(String plant_time) {
+    public Plant setPlant_time(String plant_time) {
         this.plant_time = plant_time;
         return this;
     }
@@ -117,7 +117,7 @@ public class BioPlant {
         return sowing_time_out;
     }
 
-    public BioPlant setSowing_time_out(String sowing_time_out) {
+    public Plant setSowing_time_out(String sowing_time_out) {
         this.sowing_time_out = sowing_time_out;
         return this;
     }
@@ -126,7 +126,7 @@ public class BioPlant {
         return harvest_time;
     }
 
-    public BioPlant setHarvest_time(String harvest_time) {
+    public Plant setHarvest_time(String harvest_time) {
         this.harvest_time = harvest_time;
         return this;
     }
@@ -135,7 +135,7 @@ public class BioPlant {
         return sowing_depth;
     }
 
-    public BioPlant setSowing_depth(String sowing_depth) {
+    public Plant setSowing_depth(String sowing_depth) {
         this.sowing_depth = sowing_depth;
         return this;
     }
@@ -144,7 +144,7 @@ public class BioPlant {
         return germination;
     }
 
-    public BioPlant setGermination(String germination) {
+    public Plant setGermination(String germination) {
         this.germination = germination;
         return this;
     }
@@ -153,7 +153,7 @@ public class BioPlant {
         return space;
     }
 
-    public BioPlant setSpace(String space) {
+    public Plant setSpace(String space) {
         this.space = space;
         return this;
     }
@@ -162,7 +162,7 @@ public class BioPlant {
         return picture;
     }
 
-    public BioPlant setPicture(String picture) {
+    public Plant setPicture(String picture) {
         this.picture = picture;
         return this;
     }

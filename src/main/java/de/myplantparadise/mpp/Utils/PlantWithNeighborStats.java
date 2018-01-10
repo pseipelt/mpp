@@ -1,17 +1,17 @@
 package de.myplantparadise.mpp.Utils;
 
-import de.myplantparadise.mpp.DataStorage.BioPlant;
+import de.myplantparadise.mpp.DataStorage.Plant;
 
 /**
  *
  * @author Pascal
  */
-public class BioPlantWithNeighborStats {
+public class PlantWithNeighborStats {
     private int badNr;
     private int goodNr;
-    private BioPlant plant;
+    private Plant plant;
     
-    public BioPlantWithNeighborStats(BioPlant plant, int good, int bad) {
+    public PlantWithNeighborStats(Plant plant, int good, int bad) {
         this.goodNr = good;
         this.badNr = bad;
         this.plant = plant;
@@ -41,11 +41,11 @@ public class BioPlantWithNeighborStats {
         this.goodNr = goodNr;
     }
 
-    public BioPlant getPlant() {
+    public Plant getPlant() {
         return plant;
     }
 
-    public void setPlant(BioPlant plant) {
+    public void setPlant(Plant plant) {
         this.plant = plant;
     }
     

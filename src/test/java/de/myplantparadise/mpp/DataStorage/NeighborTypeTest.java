@@ -11,7 +11,7 @@ import org.junit.Test;
  */
 public class NeighborTypeTest {
 
-    private Plants storage;
+    private PlantStorage storage;
     
     @Test
     @Ignore
