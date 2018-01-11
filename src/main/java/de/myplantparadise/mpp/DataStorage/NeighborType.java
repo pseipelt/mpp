@@ -1,10 +1,11 @@
 package de.myplantparadise.mpp.DataStorage;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class NeighborType {
+public class NeighborType implements Serializable {
     List<String> good_neighbors = new ArrayList();
     List<String> bad_neighbors = new ArrayList();
     String neighbor_type;

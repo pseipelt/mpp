@@ -1,5 +1,6 @@
 package de.myplantparadise.mpp.DataStorage;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -9,8 +10,8 @@ import javax.enterprise.context.ApplicationScoped;
  * @author Pascal
  */
 @ApplicationScoped
-public class PlantStorage {
-    private Plant alant, amaranth, anis, artischocke, aubergine, baldrian,
+public class PlantStorage implements Serializable {
+    private final Plant alant, amaranth, anis, artischocke, aubergine, baldrian,
             baerlauch, basilikum, bete, blumenkohl, bohne, bohnenkraut, borretsch,
             brokkoli, buchweizen, chicoree, chinakohl, dill, eberraute, 
             endivie, erbse, erdbeere, erdnuss, estragon, feldsalat, fenchel, gurke, 
@@ -26,7 +27,7 @@ public class PlantStorage {
             spinat, suesskartoffel, tagetes, tetragonia, thymian, tomate, topinambur, 
             weinraute, wermut, winterportulak, ysop, zucchini, zwiebel;
     
-    private List<Plant> bioPlants;
+    private final List<Plant> bioPlants;
 
     public PlantStorage() {
         alant = new Plant().setName("Alant");
