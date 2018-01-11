@@ -1,12 +1,13 @@
 package de.myplantparadise.mpp.Utils;
 
 import de.myplantparadise.mpp.DataStorage.Plant;
+import java.io.Serializable;
 
 /**
  *
  * @author Pascal
  */
-public class PlantWithNeighborStats {
+public class PlantWithNeighborStats implements Serializable {
     private int badNr;
     private int goodNr;
     private Plant plant;

@@ -1,12 +1,13 @@
 package de.myplantparadise.mpp.Utils;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
  *
  * @author pst2
  */
-public class SortUtil {
+public class SortUtil implements Serializable {
     public static List<PlantWithNeighborStats> sortByGoodNeighbor(List<PlantWithNeighborStats> plantList) {
         plantList.sort((object1, object2) -> object1.getPlant().getName().compareTo(object2.getPlant().getName()));
         plantList.sort((object1, object2) -> object1.getGoodNrToCompare().compareTo(object2.getGoodNrToCompare()));
