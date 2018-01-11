@@ -2,15 +2,16 @@ package de.myplantparadise.mpp.MPPBeans;
 
 import de.myplantparadise.mpp.DataStorage.Plant;
 import de.myplantparadise.mpp.DataStorage.PlantStorage;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.PostConstruct;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
+import javax.enterprise.context.SessionScoped;
+import javax.inject.Named;
 
-@ManagedBean(name="NeighbortableBean")
+@Named(value = "NeighbortableBean")
 @SessionScoped
-public class NeighbortableBean {
+public class NeighbortableBean implements Serializable {
     
     private List<String> listOfAllPlantNames;
     private String selectedPlant = "";

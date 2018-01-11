@@ -4,9 +4,8 @@ import de.myplantparadise.mpp.DataStorage.Plant;
 import de.myplantparadise.mpp.DataStorage.PlantStorage;
 import de.myplantparadise.mpp.Utils.PlantWithNeighborStats;
 import de.myplantparadise.mpp.Utils.SortUtil;
+import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.inject.Named;
@@ -14,7 +13,7 @@ import javax.enterprise.context.SessionScoped;
 
 @Named(value = "EvaluatorBean")
 @SessionScoped
-public class EvaluatorBean {
+public class EvaluatorBean implements Serializable {
     private int evaluationValue;
     private int red;
     private int green;
@@ -44,7 +43,6 @@ public class EvaluatorBean {
         }
         return results;
     }
-    
     
     public String loadPlantForTable() {
         Plant plantToAdd = storage.getPlantByName(selectedPlant);
