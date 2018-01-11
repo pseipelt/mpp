@@ -1,21 +1,21 @@
-package MPPBeans;
+package de.myplantparadise.mpp.MPPBeans;
 
-import DataStorage.BioPlant;
-import DataStorage.Plants;
+import de.myplantparadise.mpp.DataStorage.Plant;
+import de.myplantparadise.mpp.DataStorage.PlantStorage;
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.PostConstruct;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
+import javax.inject.Named;
+import javax.enterprise.context.SessionScoped;
 
-@ManagedBean(name="DictionaryBean")
+@Named(value = "DictionaryBean")
 @SessionScoped
 public class DictionaryBean {
     private List<String> listOfAllPlantNames;
     private String selectedPlant = "";
-    private BioPlant plantToShow = new BioPlant("default");
+    private Plant plantToShow = new Plant("default");
     
-    private Plants storage = new Plants(); 
+    private PlantStorage storage = new PlantStorage(); 
     
     @PostConstruct
     public void init() {
@@ -60,11 +60,11 @@ public class DictionaryBean {
         this.selectedPlant = selectedPlant;
     }
 
-    public BioPlant getPlantToShow() {
+    public Plant getPlantToShow() {
         return plantToShow;
     }
 
-    public void setPlantToShow(BioPlant plantToShow) {
+    public void setPlantToShow(Plant plantToShow) {
         this.plantToShow = plantToShow;
     }
     

@@ -1,4 +1,4 @@
-package DataStorage;
+package de.myplantparadise.mpp.DataStorage;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,7 +11,7 @@ import org.junit.Test;
  */
 public class NeighborTypeTest {
 
-    private Plants storage;
+    private PlantStorage storage;
     
     @Test
     @Ignore

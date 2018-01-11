@@ -1,16 +1,16 @@
-package DataStorage;
+package de.myplantparadise.mpp.DataStorage;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import javax.faces.bean.ApplicationScoped;
+import javax.enterprise.context.ApplicationScoped;
 
 /**
  * @author Pascal
  */
 @ApplicationScoped
-public class Plants {
-    private BioPlant alant, amaranth, anis, artischocke, aubergine, baldrian,
+public class PlantStorage {
+    private Plant alant, amaranth, anis, artischocke, aubergine, baldrian,
             baerlauch, basilikum, bete, blumenkohl, bohne, bohnenkraut, borretsch,
             brokkoli, buchweizen, chicoree, chinakohl, dill, eberraute, 
             endivie, erbse, erdbeere, erdnuss, estragon, feldsalat, fenchel, gurke, 
@@ -26,89 +26,89 @@ public class Plants {
             spinat, suesskartoffel, tagetes, tetragonia, thymian, tomate, topinambur, 
             weinraute, wermut, winterportulak, ysop, zucchini, zwiebel;
     
-    private List<BioPlant> bioPlants;
+    private List<Plant> bioPlants;
 
-    public Plants() {
-        alant = new BioPlant().setName("Alant");
+    public PlantStorage() {
+        alant = new Plant().setName("Alant");
         
-        amaranth = new BioPlant().setName("Amaranth")
+        amaranth = new Plant().setName("Amaranth")
                 .addToSynonyms("Baumspinat", "Erdbeerspinat", "Melde", "Roter Meier");
         
-        anis = new BioPlant().setName("Anis");
+        anis = new Plant().setName("Anis");
         
-        artischocke = new BioPlant().setName("Artischocke");
+        artischocke = new Plant().setName("Artischocke");
         
-        aubergine = new BioPlant().setName("Aubergine")
+        aubergine = new Plant().setName("Aubergine")
                 .setSowing_time_in("AFebruar-EMärz")
                 .setPlant_time("MMai-AJuni")
                 .setHarvest_time("EJuni-AOktober")
                 .setSpace("50x50");
         
-        baldrian = new BioPlant().setName("Baldrian")
+        baldrian = new Plant().setName("Baldrian")
                 .setSowing_time_in("AJuli-EAugust")
                 .setPlant_time("ASeptember-ESeptember")
                 .setSpace("40x40");
         
-        baerlauch = new BioPlant().setName("Bärlauch");
+        baerlauch = new Plant().setName("Bärlauch");
 
-        basilikum = new BioPlant().setName("Basilikum")
+        basilikum = new Plant().setName("Basilikum")
                 .setSpace("30x30");
 
-        bete = new BioPlant().setName("Bete")
+        bete = new Plant().setName("Bete")
                 .addToSynonyms("Gelbe Bete", "Rote Bete", "Weisse Bete")
                 .setSowing_time_out("AApril-MJuni")
                 .setHarvest_time("ASeptember-ENovember")
                 .setSpace("20x20");
 
-        blumenkohl = new BioPlant().setName("Blumenkohl");
+        blumenkohl = new Plant().setName("Blumenkohl");
 
-        bohne = new BioPlant().setName("Bohne")
+        bohne = new Plant().setName("Bohne")
                 .setSowing_time_out("AMai-EJuni")
                 .setHarvest_time("AJuli-EOktober")
                 .addToSynonyms("Buschbohne", "Feuerbohne", "Stangenbohne", "Trockenbohne");
         
-        bohnenkraut = new BioPlant().setName("Bohnenkraut")
+        bohnenkraut = new Plant().setName("Bohnenkraut")
                 .setSowing_time_out("AApril-EJuni");
 
-        borretsch = new BioPlant().setName("Borretsch");
+        borretsch = new Plant().setName("Borretsch");
 
-        brokkoli = new BioPlant().setName("Brokkoli")
+        brokkoli = new Plant().setName("Brokkoli")
                 .setSowing_time_in("AFebruar-EJuli")
                 .setHarvest_time("AJuni-EOktober");
         
-        buchweizen = new BioPlant().setName("Buchweizen");
+        buchweizen = new Plant().setName("Buchweizen");
 
-        chicoree = new BioPlant().setName("Chicoree");
+        chicoree = new Plant().setName("Chicoree");
         
-        chinakohl = new BioPlant().setName("Chinakohl")
+        chinakohl = new Plant().setName("Chinakohl")
                 .addToSynonyms("Asia-Salat")
                 .setSowing_time_in("MApril-EJuli")
                 .setHarvest_time("EMai-MSeptember")
                 .setSpace("30x30");
         
-        dill = new BioPlant().setName("Dill");
+        dill = new Plant().setName("Dill");
 
-        eberraute = new BioPlant().setName("Eberraute");
+        eberraute = new Plant().setName("Eberraute");
 
-        endivie = new BioPlant().setName("Endivie");
+        endivie = new Plant().setName("Endivie");
         
-        erbse = new BioPlant().setName("Erbse")
+        erbse = new Plant().setName("Erbse")
                 .addToSynonyms("Kapuzinererbse", "Markerbse", "Schalerbse", "Zuckererbse")
                 .setSowing_time_out("MMärz-MJuni")
                 .setHarvest_time("AJuni-EAugust");
 
-        erdbeere = new BioPlant().setName("Erdbeere")
+        erdbeere = new Plant().setName("Erdbeere")
                 .addToSynonyms("Monatserdbeere", "Walderdbeere");
 
-        erdnuss = new BioPlant().setName("Erdnuss");
+        erdnuss = new Plant().setName("Erdnuss");
 
-        estragon = new BioPlant().setName("Estragon");
+        estragon = new Plant().setName("Estragon");
 
-        feldsalat = new BioPlant().setName("Feldsalat");
+        feldsalat = new Plant().setName("Feldsalat");
 
-        fenchel = new BioPlant().setName("Fenchel");
+        fenchel = new Plant().setName("Fenchel");
 
-        gurke = new BioPlant().setName("Gurke")
+        gurke = new Plant().setName("Gurke")
                 .addToSynonyms("Angurische Gurke", "Einlegegurke", "Horngurke", "Hörnchenkürbis", "Netzgurke", "Salatgurke", "Zwerggurke")
                 .setSowing_time_in("MMärz-MApril")
                 .setPlant_time("AMai-EMai")
@@ -116,226 +116,226 @@ public class Plants {
                 .setHarvest_time("MJuni-EOktober")
                 .setSpace("100x100");
 
-        hafer = new BioPlant().setName("Hafer")
+        hafer = new Plant().setName("Hafer")
                 .addToSynonyms("Nackthafer", "Sandhafer", "Fahnenhafer");
 
-        haferwurzel = new BioPlant().setName("Haferwurzel");
+        haferwurzel = new Plant().setName("Haferwurzel");
 
-        hirse = new BioPlant().setName("Hirse")
+        hirse = new Plant().setName("Hirse")
                 .addToSynonyms("Kolbenhirse", "Mohrenhirse", "Rispenhirse", "Zuckerhirse");
 
-        kamille = new BioPlant().setName("Kamille");
+        kamille = new Plant().setName("Kamille");
         
-        kapuzinerkresse = new BioPlant().setName("Kapuzinerkresse")
+        kapuzinerkresse = new Plant().setName("Kapuzinerkresse")
                 .setSowing_time_in("AMärz-AMai")
                 .setPlant_time("MMai-EMai")
                 .setSowing_time_out("AMai-EMai");
 
-        karde = new BioPlant().setName("Karde");
+        karde = new Plant().setName("Karde");
 
-        kartoffel = new BioPlant().setName("Kartoffel");
+        kartoffel = new Plant().setName("Kartoffel");
 
-        kerbel = new BioPlant().setName("Kerbel");
+        kerbel = new Plant().setName("Kerbel");
 
-        kichererbse = new BioPlant().setName("Kichererbse");
+        kichererbse = new Plant().setName("Kichererbse");
 
-        knoblauch = new BioPlant().setName("Knoblauch");
+        knoblauch = new Plant().setName("Knoblauch");
 
-        kohlrabi = new BioPlant().setName("Kohlrabi");
+        kohlrabi = new Plant().setName("Kohlrabi");
 
-        koenigskerze = new BioPlant().setName("Königskerze");
+        koenigskerze = new Plant().setName("Königskerze");
 
-        kopfkohl = new BioPlant().setName("Kopfkohl")
+        kopfkohl = new Plant().setName("Kopfkohl")
                 .addToSynonyms("Butterkohl", "Rotkohl", "Spitzkohl", "Weißkohl", "Wirsing")
                 .setSowing_time_in("AMärz-EApril")
                 .setHarvest_time("AOktober-ENovember");
 
-        koriander = new BioPlant().setName("Koriander")
+        koriander = new Plant().setName("Koriander")
                 .setSowing_time_out("MApril-AMai");
 
-        krauskohl = new BioPlant().setName("Krauskohl")
+        krauskohl = new Plant().setName("Krauskohl")
                 .addToSynonyms("Blaukohl", "Braunkohl", "Grünkohl")
                 .setSowing_time_in("MMärz-AMai")
                 .setPlant_time("MMai-AJuni")
                 .setHarvest_time("ANovember-EFebruar");
 
-        kresse = new BioPlant().setName("Kresse");
+        kresse = new Plant().setName("Kresse");
         
-        kuemmel = new BioPlant().setName("Kümmel");
+        kuemmel = new Plant().setName("Kümmel");
 
-        kuerbis = new BioPlant().setName("Kürbis")
+        kuerbis = new Plant().setName("Kürbis")
                 .addToSynonyms("Gartenkürbis", "Moschuskürbis", "Ölkürbis", "Riesenkürbis", "Zierkürbis")
                 .setSowing_time_in("EMärz-EApril")
                 .setPlant_time("MMai-EMai")
                 .setSowing_time_out("MMai-EMai")
                 .setHarvest_time("MSeptember-MOktober");
 
-        lauch = new BioPlant().setName("Lauch")
+        lauch = new Plant().setName("Lauch")
                 .addToSynonyms("Lauchzwiebel", "Porree", "Winterheckenzwiebel");
 
-        lavendel = new BioPlant().setName("Lavendel");
+        lavendel = new Plant().setName("Lavendel");
 
-        lein = new BioPlant().setName("Lein")
+        lein = new Plant().setName("Lein")
                 .addToSynonyms("Öllein", "Staudenlein")
                 .setSowing_time_out("AApril-EMai");
 
-        liebstoeckel = new BioPlant().setName("Liebstöckel");
+        liebstoeckel = new Plant().setName("Liebstöckel");
 
-        linse = new BioPlant().setName("Linse");
+        linse = new Plant().setName("Linse");
 
-        mais = new BioPlant().setName("Mais")
+        mais = new Plant().setName("Mais")
                 .addToSynonyms("Popp-Mais", "Zuckermais")
                 .setSowing_time_in("MMärz-MApril")
                 .setPlant_time("MMai-EMai")
                 .setSowing_time_out("EApril-MMai")
                 .setHarvest_time("ASeptember-AOktober");
 
-        majoran = new BioPlant().setName("Majoran");
+        majoran = new Plant().setName("Majoran");
 
-        mangold = new BioPlant().setName("Mangold");
+        mangold = new Plant().setName("Mangold");
 
-        meerrettich = new BioPlant().setName("Meerrettich");
+        meerrettich = new Plant().setName("Meerrettich");
 
-        melisse = new BioPlant().setName("Melisse");
+        melisse = new Plant().setName("Melisse");
 
-        melone = new BioPlant().setName("Melone")
+        melone = new Plant().setName("Melone")
                 .addToSynonyms("Honigmelone", "Riesenmelone", "Wassermelone", "Wildmelone")
                 .setSowing_time_in("AApril-EApril")
                 .setPlant_time("EMai-MJuni")
                 .setHarvest_time("MAugust-MOktober")
                 .setSpace("100x100");
 
-        minze = new BioPlant().setName("Minze")
+        minze = new Plant().setName("Minze")
                 .addToSynonyms("Acker-Minze", "Grüne Minze", "Hirsch-Minze", "Korsische Minze", "Langblättrige Minze", "Pfefferminze", "Poleiminze", "Rundblättrige Minze", "Wasser-Minze");
 
-        moehre = new BioPlant().setName("Möhre")
+        moehre = new Plant().setName("Möhre")
                 .addToSynonyms("Karotte")
                 .setSowing_time_out("AMärz-AJuni")
                 .setHarvest_time("AJuni-EOktober");
 
-        nelke = new BioPlant().setName("Nelke");
+        nelke = new Plant().setName("Nelke");
 
-        oregano = new BioPlant().setName("Oregano");
+        oregano = new Plant().setName("Oregano");
 
-        paprika = new BioPlant().setName("Paprika")
+        paprika = new Plant().setName("Paprika")
                 .addToSynonyms("Chili", "Gemüsepaprika", "Gewürzpaprika", "Glockenpaprika", "Peperoni", "Pfefferone")
                 .setSowing_time_in("EJanuar-EFebruar")
                 .setPlant_time("MMai-MJuni")
                 .setHarvest_time("AJuli-EOktober")
                 .setSpace("50x50");
 
-        pastinake = new BioPlant().setName("Pastinake");
+        pastinake = new Plant().setName("Pastinake");
         
-        petersilie = new BioPlant().setName("Petersilie")
+        petersilie = new Plant().setName("Petersilie")
                 .addToSynonyms("Wurzelpetersilie");
 
-        phacelia = new BioPlant().setName("Phacelia");
+        phacelia = new Plant().setName("Phacelia");
 
-        physalis = new BioPlant().setName("Physalis")
+        physalis = new Plant().setName("Physalis")
                 .addToSynonyms("Ananaskirsche", "Andenbeere", "Tomatillo");
 
-        puffbohne = new BioPlant().setName("Puffbohne")
+        puffbohne = new Plant().setName("Puffbohne")
                 .addToSynonyms("Ackerbohne", "Dicke Bohne", "Saubohne");
 
-        radicchio = new BioPlant().setName("Radicchio");
+        radicchio = new Plant().setName("Radicchio");
 
-        radieschen = new BioPlant().setName("Radieschen")
+        radieschen = new Plant().setName("Radieschen")
                 .addToSynonyms("Radies");
 
-        raps = new BioPlant().setName("Raps");
+        raps = new Plant().setName("Raps");
 
-        rettich = new BioPlant().setName("Rettich");
+        rettich = new Plant().setName("Rettich");
 
-        rhabarber = new BioPlant().setName("Rhabarber");
+        rhabarber = new Plant().setName("Rhabarber");
 
-        ringelblume = new BioPlant().setName("Ringelblume");
+        ringelblume = new Plant().setName("Ringelblume");
 
-        rose = new BioPlant().setName("Rose");
+        rose = new Plant().setName("Rose");
 
-        rosenkohl = new BioPlant().setName("Rosenkohl");
+        rosenkohl = new Plant().setName("Rosenkohl");
 
-        rosmarin = new BioPlant().setName("Rosmarin");
+        rosmarin = new Plant().setName("Rosmarin");
 
-        ruebe = new BioPlant().setName("Rübe")
+        ruebe = new Plant().setName("Rübe")
                 .addToSynonyms("Herbstrübe", "Steckrübe")
                 .setSowing_time_in("AMai-AJuli")
                 .setPlant_time("AJuni-AAugust")
                 .setHarvest_time("ESeptember-ANovember")
                 .setSpace("40x40");
 
-        rukola = new BioPlant().setName("Rukola")
+        rukola = new Plant().setName("Rukola")
                 .addToSynonyms("Rauke", "Salatrauke");
 
-        salat = new BioPlant().setName("Salat")
+        salat = new Plant().setName("Salat")
                 .addToSynonyms("Bataviasalat", "Blattsalat", "Eichblattsalat", "Eissalat", "Kopfsalat", "Pflücksalat", "Römersalat", "Schnittsalat", "Spargelsalat")
                 .setSpace("30x30");
         
-        salbei = new BioPlant().setName("Salbei");
+        salbei = new Plant().setName("Salbei");
 
-        schnittlauch = new BioPlant().setName("Schnittlauch")
+        schnittlauch = new Plant().setName("Schnittlauch")
                 .addToSynonyms("Schnittknoblauch")
                 .setSowing_time_in("AMärz-EMärz")
                 .setPlant_time("AMai-EMai")
                 .setSowing_time_out("AMai-EJuni");
 
-        schwarzwurzel = new BioPlant().setName("Schwarzwurzel");
+        schwarzwurzel = new Plant().setName("Schwarzwurzel");
 
-        sellerie = new BioPlant().setName("Sellerie")
+        sellerie = new Plant().setName("Sellerie")
                 .addToSynonyms("Knollensellerie", "Stangensellerie")
                 .setSowing_time_in("EFebruar-AApril")
                 .setPlant_time("AMai-EMai")
                 .setHarvest_time("AOktober-MNovember")
                 .setSpace("30x30");
 
-        senf = new BioPlant().setName("Senf")
+        senf = new Plant().setName("Senf")
                 .addToSynonyms("Äthiopischer Senf", "Blattsenf", "Brauner Senf", "Schwarzer Senf", "Weißer Senf");
 
-        sojabohne = new BioPlant().setName("Sojabohne")
+        sojabohne = new Plant().setName("Sojabohne")
                 .setSowing_time_out("MMai-MJuni")
                 .setHarvest_time("EJuli-MOktober");
 
-        sommerportulak = new BioPlant().setName("Sommerportulak");
+        sommerportulak = new Plant().setName("Sommerportulak");
 
-        sonnenblume = new BioPlant().setName("Sonnenblume")
+        sonnenblume = new Plant().setName("Sonnenblume")
                 .setSowing_time_in("AMärz-EMärz")
                 .setPlant_time("EApril-MMai");
 
-        spargel = new BioPlant().setName("Spargel");
+        spargel = new Plant().setName("Spargel");
 
-        spinat = new BioPlant().setName("Spinat");
+        spinat = new Plant().setName("Spinat");
 
-        suesskartoffel = new BioPlant().setName("Süßkartoffel");
+        suesskartoffel = new Plant().setName("Süßkartoffel");
         
-        tagetes = new BioPlant().setName("Tagetes")
+        tagetes = new Plant().setName("Tagetes")
                 .addToSynonyms("Studetenblume");
         
-        tetragonia = new BioPlant().setName("Tetragonia")
+        tetragonia = new Plant().setName("Tetragonia")
                 .addToSynonyms("Neuseeländer Spinat")
                 .setSowing_time_in("AApril-AMai")
                 .setPlant_time("MMai-EMai")
                 .setHarvest_time("EJuni-EOktober")
                 .setSpace("70x70");
 
-        thymian = new BioPlant().setName("Thymian");
+        thymian = new Plant().setName("Thymian");
 
-        tomate = new BioPlant().setName("Tomate")
+        tomate = new Plant().setName("Tomate")
                 .addToSynonyms("Buschtomate", "Cocktailtomate", "Fleischtomate", "Marktomate", "Paradeiser", "Rispentomate", "Salattomate", "Wildtomate")
                 .setSowing_time_in("EFebruar-AApril")
                 .setPlant_time("MMai-AJuni")
                 .setHarvest_time("MJuli-EOktober");
 
-        topinambur = new BioPlant().setName("Topinambur");
+        topinambur = new Plant().setName("Topinambur");
 
-        weinraute = new BioPlant().setName("Weinraute");
+        weinraute = new Plant().setName("Weinraute");
 
-        wermut = new BioPlant().setName("Wermut");
+        wermut = new Plant().setName("Wermut");
 
-        winterportulak = new BioPlant().setName("Winterportulak")
+        winterportulak = new Plant().setName("Winterportulak")
                 .addToSynonyms("Postelein");
 
-        ysop = new BioPlant().setName("Ysop");
+        ysop = new Plant().setName("Ysop");
 
-        zucchini = new BioPlant().setName("Zucchini")
+        zucchini = new Plant().setName("Zucchini")
                 .addToSynonyms("Keulenzucchini", "Ölzucchini", "Rondini")
                 .setSowing_time_in("EMärz-EApril")
                 .setPlant_time("MMai-EMai")
@@ -343,7 +343,7 @@ public class Plants {
                 .setHarvest_time("EJuni-MOktober")
                 .setSpace("100x100");
 
-        zwiebel = new BioPlant().setName("Zwiebel")
+        zwiebel = new Plant().setName("Zwiebel")
                 .setSowing_time_in("AMärz-EMärz")
                 .setPlant_time("AApril-EMai")
                 .setSowing_time_out("AFebruar-EMärz")
@@ -372,7 +372,7 @@ public class Plants {
     
     public List<String> getAllPlantNames() {
         List<String> plantNames = new ArrayList();
-        for(BioPlant plant : bioPlants) {
+        for(Plant plant : bioPlants) {
             plantNames.add(plant.getName());
         }
         return plantNames;
@@ -381,11 +381,11 @@ public class Plants {
     public List<String> getAllPlantNamesWithSynonyms() {
         List<String> plantNames = new ArrayList();
         //first add all plant names
-        for(BioPlant plant : bioPlants) {
+        for(Plant plant : bioPlants) {
             plantNames.add(plant.getName());
         }
         //then add plant (synonym)
-        for(BioPlant plant : bioPlants) {
+        for(Plant plant : bioPlants) {
             for(String synonym : plant.getSynonyms()) {
                 plantNames.add(plant.getName() + " (" + synonym + ")");
             }
@@ -393,11 +393,11 @@ public class Plants {
         return plantNames;
     }
     
-    public BioPlant getPlantByName(String name) {
+    public Plant getPlantByName(String name) {
         if(name.contains(" (") && name.contains(")")) {
             name = name.split(" \\(", 2)[0];
         }
-        for (BioPlant plant : bioPlants) {
+        for (Plant plant : bioPlants) {
             if(plant.getName().equals(name)){
                 return plant;
             }

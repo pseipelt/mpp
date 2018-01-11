@@ -1,22 +1,26 @@
-package Utils;
+package de.myplantparadise.mpp.Utils;
 
-import DataStorage.BioPlant;
+import de.myplantparadise.mpp.DataStorage.Plant;
 
 /**
  *
  * @author Pascal
  */
-public class BioPlantWithAmount {
+public class PlantWithAmount {
     private int amount;
-    private BioPlant plant;
+    private Plant plant;
     
-    public BioPlantWithAmount(BioPlant plant, int amount) {
+    public PlantWithAmount(Plant plant, int amount) {
         this.amount = amount;
         this.plant = plant;
     }
 
     public int getAmount() {
         return amount;
+    }
+    
+    public Integer getAmountToCompare() {
+        return - amount;
     }
     
     public void addToAmount (int number) {
@@ -27,11 +31,11 @@ public class BioPlantWithAmount {
         this.amount = amount;
     }
 
-    public BioPlant getPlant() {
+    public Plant getPlant() {
         return plant;
     }
 
-    public void setPlant(BioPlant plant) {
+    public void setPlant(Plant plant) {
         this.plant = plant;
     }
 }
