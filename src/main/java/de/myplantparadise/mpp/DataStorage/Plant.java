@@ -1,5 +1,6 @@
 package de.myplantparadise.mpp.DataStorage;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -7,7 +8,7 @@ import java.util.List;
 /**
  * @author Pascal
  */
-public class Plant {
+public class Plant implements Serializable {
     //create variables
     private String name = "";
     private List<String> synonyms = new ArrayList();
