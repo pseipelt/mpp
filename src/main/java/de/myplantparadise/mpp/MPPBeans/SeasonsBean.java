@@ -2,6 +2,7 @@ package de.myplantparadise.mpp.MPPBeans;
 
 import de.myplantparadise.mpp.DataStorage.Plant;
 import de.myplantparadise.mpp.DataStorage.PlantStorage;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -11,7 +12,7 @@ import javax.inject.Named;
 
 @Named(value = "SeasonsBean")
 @SessionScoped
-public class SeasonsBean {
+public class SeasonsBean implements Serializable {
     private String selectedPlant = "";
     
     private List<String> listOfAllPlantNames;

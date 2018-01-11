@@ -5,6 +5,7 @@ import de.myplantparadise.mpp.DataStorage.PlantStorage;
 import de.myplantparadise.mpp.Utils.ArrayUtil;
 import de.myplantparadise.mpp.Utils.PlantWithAmount;
 import de.myplantparadise.mpp.Utils.SortUtil;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -14,7 +15,7 @@ import javax.enterprise.context.SessionScoped;
 
 @Named(value = "PlannerBean")
 @SessionScoped
-public class PlannerBean {
+public class PlannerBean implements Serializable {
     ArrayUtil array_util = new ArrayUtil();
     private PlantStorage storage = new PlantStorage(); 
     

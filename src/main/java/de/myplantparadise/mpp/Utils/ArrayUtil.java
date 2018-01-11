@@ -1,10 +1,12 @@
 package de.myplantparadise.mpp.Utils;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Pascal
  */
-public class ArrayUtil {
+public class ArrayUtil implements Serializable {
 
     public String[][] remove(String[][] array, int index){
         String[][] x;
