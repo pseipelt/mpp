@@ -18,4 +18,10 @@ public class SortUtil {
         plantList.sort((object1, object2) -> object1.getBadNrToCompare().compareTo(object2.getBadNrToCompare()));
         return plantList;
     }
+    
+    public static List<PlantWithAmount> sortByAmount(List<PlantWithAmount> plantList) {
+        // alphabetical sort doesn't matter here
+        plantList.sort((object1, object2) -> object1.getAmountToCompare().compareTo(object2.getAmountToCompare()));
+        return plantList;
+    }
 }

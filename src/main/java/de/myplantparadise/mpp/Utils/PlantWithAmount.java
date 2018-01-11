@@ -19,6 +19,10 @@ public class PlantWithAmount {
         return amount;
     }
     
+    public Integer getAmountToCompare() {
+        return - amount;
+    }
+    
     public void addToAmount (int number) {
         this.amount += number;
     }

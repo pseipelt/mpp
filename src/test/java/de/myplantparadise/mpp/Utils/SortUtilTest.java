@@ -15,6 +15,7 @@ public class SortUtilTest {
     
     private Plant bohne, brokkoli, gurke, tomate;
     private List<PlantWithNeighborStats> plantList;
+    private List<PlantWithAmount> plantListAmount;
     
     @Before
     public void setupClass() {
@@ -24,11 +25,16 @@ public class SortUtilTest {
         this.tomate = new Plant().setName("Tomate");
         
         this.plantList = new ArrayList();
-        
         plantList.add(new PlantWithNeighborStats(this.bohne, 2, 2));
         plantList.add(new PlantWithNeighborStats(this.brokkoli, 2, 2));
         plantList.add(new PlantWithNeighborStats(this.gurke, 3, 3));
         plantList.add(new PlantWithNeighborStats(this.tomate, 1, 1));
+        
+        this.plantListAmount = new ArrayList();
+        plantListAmount.add(new PlantWithAmount(this.bohne, 2));
+        plantListAmount.add(new PlantWithAmount(this.brokkoli, 4));
+        plantListAmount.add(new PlantWithAmount(this.gurke, 3));
+        plantListAmount.add(new PlantWithAmount(this.tomate, 1));
     }
     
     /**
@@ -38,10 +44,10 @@ public class SortUtilTest {
     public void testSortByGoodNeighbor() {
         System.out.println("sortByGoodNeighbor");
         this.plantList = SortUtil.sortByGoodNeighbor(this.plantList);
-        Assert.assertEquals(plantList.get(0).getPlant().getName(), this.gurke.getName());
-        Assert.assertEquals(plantList.get(1).getPlant().getName(), this.bohne.getName());
-        Assert.assertEquals(plantList.get(2).getPlant().getName(), this.brokkoli.getName());
-        Assert.assertEquals(plantList.get(3).getPlant().getName(), this.tomate.getName());
+        Assert.assertEquals(this.gurke.getName(), plantList.get(0).getPlant().getName());
+        Assert.assertEquals(this.bohne.getName(), plantList.get(1).getPlant().getName());
+        Assert.assertEquals(this.brokkoli.getName(), plantList.get(2).getPlant().getName());
+        Assert.assertEquals(this.tomate.getName(), plantList.get(3).getPlant().getName());
     }
 
     /**
@@ -51,10 +57,20 @@ public class SortUtilTest {
     public void testSortByBadNeighbor() {
         System.out.println("sortByBadNeighbor");
         this.plantList = SortUtil.sortByBadNeighbor(this.plantList);
-        Assert.assertEquals(plantList.get(0).getPlant().getName(), this.gurke.getName());
-        Assert.assertEquals(plantList.get(1).getPlant().getName(), this.bohne.getName());
-        Assert.assertEquals(plantList.get(2).getPlant().getName(), this.brokkoli.getName());
-        Assert.assertEquals(plantList.get(3).getPlant().getName(), this.tomate.getName());
+        Assert.assertEquals(this.gurke.getName(), plantList.get(0).getPlant().getName());
+        Assert.assertEquals(this.bohne.getName(), plantList.get(1).getPlant().getName());
+        Assert.assertEquals(this.brokkoli.getName(), plantList.get(2).getPlant().getName());
+        Assert.assertEquals(this.tomate.getName(), plantList.get(3).getPlant().getName());
+    }
+    
+    @Test
+    public void testSortByAmount() {
+        System.out.println("sortByAmount");
+        this.plantListAmount = SortUtil.sortByAmount(this.plantListAmount);
+        Assert.assertEquals(this.brokkoli.getName(), plantListAmount.get(0).getPlant().getName());
+        Assert.assertEquals(this.gurke.getName(), plantListAmount.get(1).getPlant().getName());
+        Assert.assertEquals(this.bohne.getName(), plantListAmount.get(2).getPlant().getName());
+        Assert.assertEquals(this.tomate.getName(), plantListAmount.get(3).getPlant().getName());
     }
     
 }

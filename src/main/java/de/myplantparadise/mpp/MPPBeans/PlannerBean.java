@@ -4,6 +4,7 @@ import de.myplantparadise.mpp.DataStorage.Plant;
 import de.myplantparadise.mpp.DataStorage.PlantStorage;
 import de.myplantparadise.mpp.Utils.ArrayUtil;
 import de.myplantparadise.mpp.Utils.PlantWithAmount;
+import de.myplantparadise.mpp.Utils.SortUtil;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -150,7 +151,7 @@ public class PlannerBean {
             sortedPlantList.add(new PlantWithAmount(plant, evaluationValue));
         }
         
-        //sortedPlantList.sort(Comparator.comparingInt(BioPlantWithAmount::getAmount));
+        sortedPlantList = SortUtil.sortByAmount(sortedPlantList);
         
         List<Plant> returnList = new ArrayList();
         for(PlantWithAmount plant : sortedPlantList) {
