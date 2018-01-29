@@ -100,7 +100,7 @@ public class EvaluatorBean implements Serializable {
         }
         //sort the result Lists so that extreme values come first
         goodSuggestions = SortUtil.sortByGoodNeighbor(goodSuggestions);
-        badSuggestions = SortUtil.sortByGoodNeighbor(badSuggestions);
+        badSuggestions = SortUtil.sortByBadNeighbor(badSuggestions);
     }
     
     public void evaluate(){
