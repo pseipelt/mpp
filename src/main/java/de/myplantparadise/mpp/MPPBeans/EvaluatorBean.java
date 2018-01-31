@@ -62,28 +62,32 @@ public class EvaluatorBean implements Serializable {
         for(Plant plant : selectedPlants) {
             //count occurance as good neighbor
             for(String gn : plant.getGoodNeighbors()) {
-                boolean foundEntry = false;
-                for(PlantWithNeighborStats entry : neighborStats) {
-                    if(entry.getPlant().getName().equals(gn)) {
-                        entry.addToGoodNr(1);
-                        foundEntry = true;
+                if (!gn.isEmpty()) {
+                    boolean foundEntry = false;
+                    for(PlantWithNeighborStats entry : neighborStats) {
+                        if(entry.getPlant().getName().equals(gn)) {
+                            entry.addToGoodNr(1);
+                            foundEntry = true;
+                        }
                     }
-                }
-                if(!foundEntry) {
-                    neighborStats.add(new PlantWithNeighborStats(storage.getPlantByName(gn), 1, 0));
+                    if(!foundEntry) {
+                        neighborStats.add(new PlantWithNeighborStats(storage.getPlantByName(gn), 1, 0));
+                    }
                 }
             }
             //count occurance as bad neighbor
             for(String bn : plant.getBadNeighbors()) {
-                boolean foundEntry = false;
-                for(PlantWithNeighborStats entry : neighborStats) {
-                    if(entry.getPlant().getName().equals(bn)) {
-                        entry.addToBadNr(1);
-                        foundEntry = true;
+                if (!bn.isEmpty()) {
+                    boolean foundEntry = false;
+                    for(PlantWithNeighborStats entry : neighborStats) {
+                        if(entry.getPlant().getName().equals(bn)) {
+                            entry.addToBadNr(1);
+                            foundEntry = true;
+                        }
                     }
-                }
-                if(!foundEntry) {
-                    neighborStats.add(new PlantWithNeighborStats(storage.getPlantByName(bn), 0, 1));
+                    if(!foundEntry) {
+                        neighborStats.add(new PlantWithNeighborStats(storage.getPlantByName(bn), 0, 1));
+                    }
                 }
             }
         }
